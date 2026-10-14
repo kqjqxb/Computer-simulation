@@ -1,0 +1,50 @@
+Create: exp(1.0), PROCESS: exp(2.5), 3 канали, maxqueue = 3
+
+It's time for event in CREATE, time = 0.0000
+CREATE state = 0 quantity = 1 tnext = 0.4734
+PROCESS state = 1 queue = 0 quantity = 0 failure = 0 tnext = 0.7467
+DISPOSE state = 0 quantity = 0 tnext = inf
+
+It's time for event in CREATE, time = 0.4734
+CREATE state = 0 quantity = 2 tnext = 0.7025
+PROCESS state = 2 queue = 0 quantity = 0 failure = 0 tnext = 0.6215
+DISPOSE state = 0 quantity = 0 tnext = inf
+
+It's time for event in PROCESS, time = 0.6215
+CREATE state = 0 quantity = 2 tnext = 0.7025
+PROCESS state = 1 queue = 0 quantity = 1 failure = 0 tnext = 0.7467
+DISPOSE state = 0 quantity = 1 tnext = inf
+
+It's time for event in CREATE, time = 0.7025
+CREATE state = 0 quantity = 3 tnext = 1.0038
+PROCESS state = 2 queue = 0 quantity = 1 failure = 0 tnext = 0.7467
+DISPOSE state = 0 quantity = 1 tnext = inf
+
+It's time for event in PROCESS, time = 0.7467
+CREATE state = 0 quantity = 3 tnext = 1.0038
+PROCESS state = 1 queue = 0 quantity = 2 failure = 0 tnext = 0.9047
+DISPOSE state = 0 quantity = 2 tnext = inf
+
+It's time for event in PROCESS, time = 0.9047
+CREATE state = 0 quantity = 3 tnext = 1.0038
+PROCESS state = 0 queue = 0 quantity = 3 failure = 0 tnext = inf
+DISPOSE state = 0 quantity = 3 tnext = inf
+
+-------------RESULTS-------------
+CREATE quantity = 914
+PROCESS quantity = 837
+    failure = 74, failure probability = 0.0810
+    mean length of queue = 0.5486
+    mean load = 0.6928
+DISPOSE quantity = 837
+created = 914, disposed = 837, failures = 74, in system at the end = 3
+failure probability = 0.0810, mean number in system = 2.6270, mean time in system = 3.1386
+
+ПОРІВНЯННЯ З ТЕОРІЄЮ M/M/c/K (λ = 1.0, середній час обслуговування 2.5; 20 прогонів по 50000 одиниць часу)
+c = 1, maxqueue = 3:  Pвідм 0.6059 ± 0.0013 (теорія 0.6062)  завант. 0.9846 ± 0.0003 (теорія 0.9845)  черга 2.3980 ± 0.0040 (теорія 2.4006)
+c = 2, maxqueue = 3:  Pвідм 0.2836 ± 0.0019 (теорія 0.2837)  завант. 0.8961 ± 0.0009 (теорія 0.8954)  черга 1.4880 ± 0.0050 (теорія 1.4863)
+c = 3, maxqueue = 3:  Pвідм 0.1020 ± 0.0014 (теорія 0.1024)  завант. 0.7492 ± 0.0014 (теорія 0.7480)  черга 0.7026 ± 0.0060 (теорія 0.7005)
+c = 4, maxqueue = 3:  Pвідм 0.0307 ± 0.0007 (теорія 0.0308)  завант. 0.6070 ± 0.0017 (теорія 0.6058)  черга 0.2706 ± 0.0031 (теорія 0.2697)
+c = 5, maxqueue = 3:  Pвідм 0.0080 ± 0.0003 (теорія 0.0082)  завант. 0.4947 ± 0.0013 (теорія 0.4959)  черга 0.0884 ± 0.0015 (теорія 0.0904)
+c = 3, maxqueue = inf:  Pвідм 0.0000 ± 0.0000 (теорія 0.0000)  завант. 0.8320 ± 0.0020 (теорія 0.8333)  черга 3.3890 ± 0.0752 (теорія 3.5112)
+c = 4, maxqueue = inf:  Pвідм 0.0000 ± 0.0000 (теорія 0.0000)  завант. 0.6249 ± 0.0021 (теорія 0.6250)  черга 0.5376 ± 0.0129 (теорія 0.5331)

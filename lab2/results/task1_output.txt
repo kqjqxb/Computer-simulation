@@ -1,0 +1,46 @@
+Create: exp(2.0), Process: exp(1.0), maxqueue = 5, час моделювання 1000
+
+It's time for event in CREATOR, time = 0.0000
+CREATOR state = 0 quantity = 1 tnext = 4.0144
+PROCESSOR state = 1 queue = 0 quantity = 0 failure = 0 tnext = 0.1655
+DISPOSE state = 0 quantity = 0 tnext = inf
+
+It's time for event in PROCESSOR, time = 0.1655
+CREATOR state = 0 quantity = 1 tnext = 4.0144
+PROCESSOR state = 0 queue = 0 quantity = 1 failure = 0 tnext = inf
+DISPOSE state = 0 quantity = 1 tnext = inf
+
+It's time for event in CREATOR, time = 4.0144
+CREATOR state = 0 quantity = 2 tnext = 4.5534
+PROCESSOR state = 1 queue = 0 quantity = 1 failure = 0 tnext = 5.3806
+DISPOSE state = 0 quantity = 1 tnext = inf
+
+It's time for event in CREATOR, time = 4.5534
+CREATOR state = 0 quantity = 3 tnext = 5.9580
+PROCESSOR state = 1 queue = 1 quantity = 1 failure = 0 tnext = 5.3806
+DISPOSE state = 0 quantity = 1 tnext = inf
+
+It's time for event in PROCESSOR, time = 5.3806
+CREATOR state = 0 quantity = 3 tnext = 5.9580
+PROCESSOR state = 1 queue = 0 quantity = 2 failure = 0 tnext = 6.1803
+DISPOSE state = 0 quantity = 2 tnext = inf
+
+It's time for event in CREATOR, time = 5.9580
+CREATOR state = 0 quantity = 4 tnext = 6.8147
+PROCESSOR state = 1 queue = 1 quantity = 2 failure = 0 tnext = 6.1803
+DISPOSE state = 0 quantity = 2 tnext = inf
+
+-------------RESULTS-------------
+CREATOR quantity = 519
+PROCESSOR quantity = 515
+    failure = 3, failure probability = 0.0058
+    mean length of queue = 0.3884
+    mean load = 0.5005
+DISPOSE quantity = 515
+created = 519, disposed = 515, failures = 3, in system at the end = 1
+failure probability = 0.0058, mean number in system = 0.8889, mean time in system = 1.7260
+
+Порівняння з теорією M/M/1/5 (10 прогонів по 100000 одиниць часу, 95 % довірчий інтервал):
+ймовірність відмови      імітація = 0.0078 ± 0.0004, теорія = 0.0079
+середня довжина черги    імітація = 0.4502 ± 0.0052, теорія = 0.4488
+середнє завантаження     імітація = 0.4970 ± 0.0018, теорія = 0.4961

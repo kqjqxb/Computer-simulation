@@ -1,0 +1,146 @@
+{
+ "single": {
+  "time": 1000.0,
+  "created": 508,
+  "disposed": 480,
+  "failures": 0,
+  "in_system_now": 28,
+  "failure_probability": 0.0,
+  "mean_in_system": 11.491051554174613,
+  "mean_time_in_system": 23.939690737863778,
+  "processes": {
+   "PROCESS 1": {
+    "arrivals": 774,
+    "served": 770,
+    "failure": 0,
+    "failure_probability": 0.0,
+    "mean_queue": 4.725087377173082,
+    "mean_load": 0.7864277453579644
+   },
+   "PROCESS 2": {
+    "arrivals": 888,
+    "served": 873,
+    "failure": 0,
+    "failure_probability": 0.0,
+    "mean_queue": 2.1274513109790427,
+    "mean_load": 0.7244660660253385
+   },
+   "PROCESS 3": {
+    "arrivals": 607,
+    "served": 598,
+    "failure": 0,
+    "failure_probability": 0.0,
+    "mean_queue": 1.7062449124007562,
+    "mean_load": 0.6969080762130776
+   }
+  }
+ },
+ "rates": [
+  0.7678571428571037,
+  0.8928571428570855,
+  0.6249999999999086
+ ],
+ "theory": [
+  {
+   "element": "PROCESS 1",
+   "metric": "завантаження",
+   "sim": 0.7673644711525565,
+   "ci": 0.0032436053027515674,
+   "theory": 0.7678571428571037
+  },
+  {
+   "element": "PROCESS 1",
+   "metric": "середня черга",
+   "sim": 2.5308303763344995,
+   "ci": 0.07253776048958567,
+   "theory": 2.5398351648344772
+  },
+  {
+   "element": "PROCESS 1",
+   "metric": "надходжень на одну вимогу",
+   "sim": 1.5353592710654382,
+   "ci": null,
+   "theory": 1.5357142857142074
+  },
+  {
+   "element": "PROCESS 2",
+   "metric": "завантаження",
+   "sim": 0.7156245002556881,
+   "ci": 0.003538399873365206,
+   "theory": 0.7142857142856684
+  },
+  {
+   "element": "PROCESS 2",
+   "metric": "середня черга",
+   "sim": 1.502345647582381,
+   "ci": 0.04308628452689373,
+   "theory": 1.4880952380947525
+  },
+  {
+   "element": "PROCESS 2",
+   "metric": "надходжень на одну вимогу",
+   "sim": 1.7841165739183744,
+   "ci": null,
+   "theory": 1.785714285714171
+  },
+  {
+   "element": "PROCESS 3",
+   "metric": "завантаження",
+   "sim": 0.7512804492966506,
+   "ci": 0.003511677581245953,
+   "theory": 0.7499999999998903
+  },
+  {
+   "element": "PROCESS 3",
+   "metric": "середня черга",
+   "sim": 2.2637688958468893,
+   "ci": 0.07200960084114863,
+   "theory": 2.2499999999983546
+  },
+  {
+   "element": "PROCESS 3",
+   "metric": "надходжень на одну вимогу",
+   "sim": 1.2486834884171976,
+   "ci": null,
+   "theory": 1.2499999999998173
+  },
+  {
+   "element": "модель",
+   "metric": "час перебування",
+   "sim": 18.47708082105831,
+   "ci": 0.2906505643373277,
+   "theory": 18.44871794871183
+  }
+ ],
+ "finite": {
+  "PROCESS 1": {
+   "failure_probability": 0.12627941087310213,
+   "mean_queue": 0.48240437438079425,
+   "mean_load": 0.6215402245289599
+  },
+  "PROCESS 2": {
+   "failure_probability": 0.034219706566187676,
+   "mean_queue": 0.21655746352799934,
+   "mean_load": 0.5441589515805499
+  },
+  "PROCESS 3": {
+   "failure_probability": 0.06507301646476711,
+   "mean_queue": 0.3383947244169881,
+   "mean_load": 0.5374348979325944
+  },
+  "model": {
+   "failure_probability": 0.2881886915607982,
+   "mean_time_in_system": 9.220735676274822
+  }
+ },
+ "route_shares": {
+  "PROCESS 2": [
+   0.695303550973654,
+   0.30469644902634596
+  ],
+  "PROCESS 3": [
+   0.802675585284281,
+   0.19732441471571907
+  ]
+ }
+}

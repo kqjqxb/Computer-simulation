@@ -1,0 +1,36 @@
+{
+ "time": 1000.0,
+ "created": 508,
+ "disposed": 468,
+ "failures": 40,
+ "in_system_now": 0,
+ "failure_probability": 0.07874015748031496,
+ "mean_in_system": 4.1234607435097566,
+ "mean_time_in_system": 8.810813554508027,
+ "processes": {
+  "PROCESS 1": {
+   "arrivals": 508,
+   "served": 507,
+   "failure": 1,
+   "failure_probability": 0.001968503937007874,
+   "mean_queue": 0.3978099263119611,
+   "mean_load": 0.5037045390800267
+  },
+  "PROCESS 2": {
+   "arrivals": 507,
+   "served": 479,
+   "failure": 28,
+   "failure_probability": 0.055226824457593686,
+   "mean_queue": 1.2404143568296413,
+   "mean_load": 0.7273804168545559
+  },
+  "PROCESS 3": {
+   "arrivals": 479,
+   "served": 468,
+   "failure": 11,
+   "failure_probability": 0.022964509394572025,
+   "mean_queue": 0.6811663578949192,
+   "mean_load": 0.5729851465386486
+  }
+ }
+}
