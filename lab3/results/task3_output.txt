@@ -1,0 +1,62 @@
+Лікарня: надходження exp(15.0) хв, типи хворих {1: (0.5, 15.0), 2: (0.1, 40.0), 3: (0.4, 30.0)}
+
+It's time for event in Надходження, time = 0.0000
+Надходження state = 0 quantity = 1 tnext = 9.1258
+Приймальне відділення state = 1 queue = 0 quantity = 0 failure = 0 tnext = 7.5647
+Супровідні state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Перехід до лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Реєстратура лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Лаборанти state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Повернення до приймального state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Палата state = 0 quantity = 0 tnext = inf
+Вихід з лабораторії state = 0 quantity = 0 tnext = inf
+
+It's time for event in Приймальне відділення, time = 7.5647
+Надходження state = 0 quantity = 1 tnext = 9.1258
+Приймальне відділення state = 0 queue = 0 quantity = 1 failure = 0 tnext = inf
+Супровідні state = 1 queue = 0 quantity = 0 failure = 0 tnext = 10.8923
+Перехід до лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Реєстратура лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Лаборанти state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Повернення до приймального state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Палата state = 0 quantity = 0 tnext = inf
+Вихід з лабораторії state = 0 quantity = 0 tnext = inf
+
+It's time for event in Надходження, time = 9.1258
+Надходження state = 0 quantity = 2 tnext = 11.7863
+Приймальне відділення state = 1 queue = 0 quantity = 1 failure = 0 tnext = 30.8911
+Супровідні state = 1 queue = 0 quantity = 0 failure = 0 tnext = 10.8923
+Перехід до лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Реєстратура лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Лаборанти state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Повернення до приймального state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Палата state = 0 quantity = 0 tnext = inf
+Вихід з лабораторії state = 0 quantity = 0 tnext = inf
+
+It's time for event in Супровідні, time = 10.8923
+Надходження state = 0 quantity = 2 tnext = 11.7863
+Приймальне відділення state = 1 queue = 0 quantity = 1 failure = 0 tnext = 30.8911
+Супровідні state = 0 queue = 0 quantity = 1 failure = 0 tnext = inf
+Перехід до лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Реєстратура лабораторії state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Лаборанти state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Повернення до приймального state = 0 queue = 0 quantity = 0 failure = 0 tnext = inf
+Палата state = 0 quantity = 1 tnext = inf
+Вихід з лабораторії state = 0 quantity = 0 tnext = inf
+
+РЕЗУЛЬТАТИ (20 прогонів по 100000 хв, розгін 2000 хв, 95 % довірчий інтервал):
+  час у системі, хворі типу 1                 35.380 ± 0.606 хв
+  час у системі, хворі типу 2                178.430 ± 8.268 хв
+  час у системі, хворі типу 3                130.164 ± 6.709 хв
+  час у системі, усі хворі                    87.625 ± 3.854 хв
+  інтервал між прибуттями в лабораторію       29.939 ± 0.226 хв
+
+Характеристики пристроїв:
+  Приймальне відділення        завантаження 0.8388 ± 0.0071 (баланс потоків 0.8333), черга 3.5118, очікування 47.905 хв
+  Супровідні                   завантаження 0.0731 ± 0.0006 (баланс потоків 0.0733), черга 0.0002, очікування 0.005 хв
+  Перехід до лабораторії       завантаження 0.1168 ± 0.0010 (баланс потоків 0.1167), черга 0.0000, очікування 0.000 хв
+  Реєстратура лабораторії      завантаження 0.1506 ± 0.0013 (баланс потоків 0.1500), черга 0.0173, очікування 0.519 хв
+  Лаборанти                    завантаження 0.0666 ± 0.0006 (баланс потоків 0.0667), черга 0.0002, очікування 0.007 хв
+  Повернення до приймального   завантаження 0.0231 ± 0.0005 (баланс потоків 0.0233), черга 0.0000, очікування 0.000 хв
+
+Очікуваний інтервал між прибуттями в лабораторію = 15.0 / (0.5) = 30.0 хв
