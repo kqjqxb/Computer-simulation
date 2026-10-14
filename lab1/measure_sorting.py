@@ -50,7 +50,8 @@ def main():
                 f.flush()
                 print(f"{run}/{RUNS}: {elapsed:.4f} с", flush=True)
 
-    print(f"Python {sys.version.split()[0]}, {platform.platform()}, {platform.processor() or platform.machine()}")
+    cpu = platform.processor() or platform.machine()
+    print(f"Python {sys.version.split()[0]}, {platform.platform()}, {cpu}")
     print(f"Збережено: {OUT}")
 
 

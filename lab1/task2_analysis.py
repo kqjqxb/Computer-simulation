@@ -88,7 +88,8 @@ def generate(generator, n, seed):
 
 
 def homogeneity(real, simulated, bins=BINS):
-    """Двовибірковий χ² (однорідність) на спільних інтервалах та двовибірковий критерій Колмогорова-Смірнова."""
+    """Двовибірковий χ² (однорідність) на спільних інтервалах
+    та двовибірковий критерій Колмогорова-Смірнова."""
     edges = np.quantile(real, np.linspace(0, 1, bins + 1))
     edges[0], edges[-1] = -np.inf, np.inf
     obs_real = np.histogram(real, bins=edges)[0]
@@ -161,8 +162,8 @@ def plot_comparison(t, simulated):
     ax.plot(np.sort(t) * 1000, np.arange(1, t.size + 1) / t.size, color="#2c5d8f", linewidth=2.2,
             label="реальні заміри")
     for label, sample, color in simulated:
-        ax.plot(np.sort(sample) * 1000, np.arange(1, sample.size + 1) / sample.size, color=color, linewidth=1.2,
-                label=label)
+        ecdf = np.arange(1, sample.size + 1) / sample.size
+        ax.plot(np.sort(sample) * 1000, ecdf, color=color, linewidth=1.2, label=label)
     ax.set_xlim(lo * 1000, hi * 1000)
     ax.set_xlabel("час сортування, мс")
     ax.set_ylabel("емпірична функція розподілу")
@@ -180,7 +181,8 @@ def main():
     print(f"ЧАС СОРТУВАННЯ 1 000 000 ОБ'ЄКТІВ: n = {d['n']}")
     print(f"середнє = {d['mean'] * 1000:.3f} мс, ст. відхилення = {d['std'] * 1000:.3f} мс, "
           f"дисперсія = {d['var'] * 1e6:.4f} мс², медіана = {d['median'] * 1000:.3f} мс")
-    print(f"мінімум = {d['min'] * 1000:.3f} мс, максимум = {d['max'] * 1000:.3f} мс, асиметрія = {d['skew']:.3f}, "
+    print(f"мінімум = {d['min'] * 1000:.3f} мс, максимум = {d['max'] * 1000:.3f} мс, "
+          f"асиметрія = {d['skew']:.3f}, "
           f"коефіцієнт варіації = {d['std'] / d['mean'] * 100:.2f} %")
 
     rows = identify(t)
@@ -229,7 +231,8 @@ def main():
     print(f"Манна-Вітні p = {drift.pvalue:.2e}, КС p = {drift_ks.pvalue:.2e}")
 
     train, test = t[0::2], t[1::2]
-    print(f"\nПЕРЕХРЕСНА ПЕРЕВІРКА: побудова за непарними прогонами ({train.size}), порівняння з парними ({test.size})")
+    print(f"\nПЕРЕХРЕСНА ПЕРЕВІРКА: побудова за непарними прогонами ({train.size}), "
+          f"порівняння з парними ({test.size})")
     best_dist = best["dist"]
     cross = []
     for label, gen in [("табличний метод", TableGenerator(train)),
@@ -238,7 +241,8 @@ def main():
         hom = homogeneity(test, sample)
         err = abs(sample.mean() - test.mean()) / test.mean() * 100
         cross.append({"label": label, "homogeneity": hom, "mean_error": err})
-        print(f"{label:28} похибка середнього = {err:.2f} %, χ² = {hom['chi2']:.2f} (χ²кр = {hom['critical']:.2f}, "
+        print(f"{label:28} похибка середнього = {err:.2f} %, χ² = {hom['chi2']:.2f} "
+              f"(χ²кр = {hom['critical']:.2f}, "
               f"p = {hom['p']:.3f}), КС p = {hom['ks_p']:.3f}")
 
     plot_comparison(t, simulated)

@@ -17,7 +17,8 @@ def describe(data):
 
 
 def merge_small_bins(observed, expected, edges, min_count=5):
-    """Об'єднує сусідні інтервали, поки в кожному очікувана й спостережувана кількість не стане >= min_count."""
+    """Об'єднує сусідні інтервали, поки в кожному очікувана й спостережувана кількість не стане
+    не меншою за min_count."""
     observed, expected, edges = list(observed), list(expected), list(edges)
     i = 0
     while i < len(observed) and len(observed) > 1:

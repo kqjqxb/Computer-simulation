@@ -1,4 +1,5 @@
-"""Завдання 1: експоненційний генератор (метод оберненої функції) та мультиплікативний конгруентний генератор."""
+"""Завдання 1: експоненційний генератор (метод оберненої функції)
+та мультиплікативний конгруентний генератор."""
 import json
 import math
 import random
@@ -81,10 +82,12 @@ def exponential_part(rng):
         accepted = 0
         for _ in range(REPEATS):
             y = exponential_sample(lam, N, rng)
-            accepted += chi_square(y, lambda t: stats.expon.cdf(t, scale=y.mean()), n_params=1, bins=BINS)["accepted"]
+            repeat = chi_square(y, lambda t: stats.expon.cdf(t, scale=y.mean()), n_params=1, bins=BINS)
+            accepted += repeat["accepted"]
 
         rows.append({
-            "lambda": lam, "mean": d["mean"], "var": d["var"], "theory_mean": 1 / lam, "theory_var": 1 / lam ** 2,
+            "lambda": lam, "mean": d["mean"], "var": d["var"],
+            "theory_mean": 1 / lam, "theory_var": 1 / lam ** 2,
             "lambda_hat": lam_hat, "chi2": test["chi2"], "critical": test["critical"], "dof": test["dof"],
             "k": test["k"], "p_value": test["p_value"], "accepted": bool(test["accepted"]),
             "accept_rate": accepted / REPEATS,
@@ -137,14 +140,15 @@ def lcg_part(rng):
             "chi2": test["chi2"], "critical": test["critical"], "dof": test["dof"], "k": test["k"],
             "p_value": test["p_value"], "accepted": bool(test["accepted"]), "accept_rate": rates[0],
             "corr_rate": rates[1], "runs_rate": rates[2],
-            "max_abs_A": float(max(abs(r[2]) for r in corr)), "corr": [[j, float(r), float(A)] for j, r, A in corr],
+            "max_abs_A": float(max(abs(r[2]) for r in corr)),
+            "corr": [[j, float(r), float(A)] for j, r, A in corr],
             "runs_R": runs["R"], "runs_ok": bool(runs["accepted"]), "runs": runs["runs"].tolist(),
             "counts": [int(v) for v in np.histogram(x, bins=np.linspace(0, 1, BINS + 1))[0]],
         })
 
     fig, axes = plt.subplots(2, 2, figsize=(10, 7))
-    for (a_label, c_label), ax in zip([("5^13", "2^31"), ("5^13", "2^40"), ("5^17", "2^48"), ("65539", "2^31")],
-                                      axes.flat):
+    shown = [("5^13", "2^31"), ("5^13", "2^40"), ("5^17", "2^48"), ("65539", "2^31")]
+    for (a_label, c_label), ax in zip(shown, axes.flat):
         ax.hist(samples[(a_label, c_label)], bins=np.linspace(0, 1, BINS + 1), color="#8fcf9f",
                 edgecolor="black", linewidth=0.6)
         ax.axhline(N / BINS, color="#c0392b", linestyle="--", linewidth=1.4, label="N/m = 500")
@@ -197,7 +201,8 @@ def print_report(exp_rows, lcg_rows):
 
     print(f"\nКОНГРУЕНТНИЙ ГЕНЕРАТОР z(i+1) = a·z(i) mod c, x = z/c, z0 = 1, N = {N}, m = {BINS}, α = 0.05")
     print(f"{'a':>6} {'c':>5} {'середнє':>9} {'дисперсія':>10} {'різних':>7} {'період':>12} "
-          f"{'χ²':>9} {'χ²кр':>7} {'p':>6}  {'рішення':9} {'max|A|':>8} {'R':>9}  частка прийнять χ²/кор./серії")
+          f"{'χ²':>9} {'χ²кр':>7} {'p':>6}  {'рішення':9} {'max|A|':>8} {'R':>9}  "
+          "частка прийнять χ²/кор./серії")
     for r in lcg_rows:
         print(f"{r['a']:>6} {r['c']:>5} {r['mean']:>9.5f} {r['var']:>10.5f} {r['distinct']:>7} "
               f"{str(r['period']):>12} {r['chi2']:>9.2f} {r['critical']:>7.3f} {r['p_value']:>6.3f}  "
