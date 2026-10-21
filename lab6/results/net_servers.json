@@ -1,0 +1,419 @@
+{
+ "name": "Servers",
+ "places": [
+  {
+   "name": "Генератор",
+   "mark": 1
+  },
+  {
+   "name": "Запит",
+   "mark": 0
+  },
+  {
+   "name": "З'єднання БД",
+   "mark": 10
+  },
+  {
+   "name": "Запит С1",
+   "mark": 0
+  },
+  {
+   "name": "Місця С1",
+   "mark": 1000
+  },
+  {
+   "name": "Черга С1",
+   "mark": 0
+  },
+  {
+   "name": "Потоки С1",
+   "mark": 32
+  },
+  {
+   "name": "Готові С1",
+   "mark": 0
+  },
+  {
+   "name": "Ядра С1",
+   "mark": 8
+  },
+  {
+   "name": "Обчислено С1",
+   "mark": 0
+  },
+  {
+   "name": "Відповіді С1",
+   "mark": 0
+  },
+  {
+   "name": "Відхилено С1",
+   "mark": 0
+  },
+  {
+   "name": "Запит С2",
+   "mark": 0
+  },
+  {
+   "name": "Місця С2",
+   "mark": 1000
+  },
+  {
+   "name": "Черга С2",
+   "mark": 0
+  },
+  {
+   "name": "Потоки С2",
+   "mark": 16
+  },
+  {
+   "name": "Готові С2",
+   "mark": 0
+  },
+  {
+   "name": "Ядра С2",
+   "mark": 4
+  },
+  {
+   "name": "Обчислено С2",
+   "mark": 0
+  },
+  {
+   "name": "Відповіді С2",
+   "mark": 0
+  },
+  {
+   "name": "Відхилено С2",
+   "mark": 0
+  }
+ ],
+ "transitions": [
+  {
+   "name": "Надходження",
+   "distribution": "exp",
+   "mean": 5.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Генератор",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Генератор",
+     "n": 1
+    },
+    {
+     "place": "Запит",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "На С1",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 3,
+   "probability": 0.7000000000,
+   "inputs": [
+    {
+     "place": "Запит",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Запит С1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Прийом С1",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 2,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Запит С1",
+     "n": 1
+    },
+    {
+     "place": "Місця С1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга С1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Відмова С1",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 1,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Запит С1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Відхилено С1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Потік С1",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Черга С1",
+     "n": 1
+    },
+    {
+     "place": "Потоки С1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Готові С1",
+     "n": 1
+    },
+    {
+     "place": "Місця С1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Обробка С1",
+   "distribution": "exp",
+   "mean": 40.00000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Готові С1",
+     "n": 1
+    },
+    {
+     "place": "Ядра С1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Ядра С1",
+     "n": 1
+    },
+    {
+     "place": "Обчислено С1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Запис С1",
+   "distribution": "exp",
+   "mean": 20.00000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Обчислено С1",
+     "n": 1
+    },
+    {
+     "place": "З'єднання БД",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "З'єднання БД",
+     "n": 1
+    },
+    {
+     "place": "Потоки С1",
+     "n": 1
+    },
+    {
+     "place": "Відповіді С1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "На С2",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 3,
+   "probability": 0.3000000000,
+   "inputs": [
+    {
+     "place": "Запит",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Запит С2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Прийом С2",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 2,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Запит С2",
+     "n": 1
+    },
+    {
+     "place": "Місця С2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга С2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Відмова С2",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 1,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Запит С2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Відхилено С2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Потік С2",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Черга С2",
+     "n": 1
+    },
+    {
+     "place": "Потоки С2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Готові С2",
+     "n": 1
+    },
+    {
+     "place": "Місця С2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Обробка С2",
+   "distribution": "exp",
+   "mean": 50.00000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Готові С2",
+     "n": 1
+    },
+    {
+     "place": "Ядра С2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Ядра С2",
+     "n": 1
+    },
+    {
+     "place": "Обчислено С2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Запис С2",
+   "distribution": "exp",
+   "mean": 20.00000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Обчислено С2",
+     "n": 1
+    },
+    {
+     "place": "З'єднання БД",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "З'єднання БД",
+     "n": 1
+    },
+    {
+     "place": "Потоки С2",
+     "n": 1
+    },
+    {
+     "place": "Відповіді С2",
+     "n": 1
+    }
+   ]
+  }
+ ]
+}

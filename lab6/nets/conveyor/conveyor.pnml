@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Conveyor" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Conveyor</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject index="0" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="p-7ff05e2c">
+        <name>
+          <text>Генератор</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="40" y="420"/>
+        </graphics>
+      </place>
+      <place id="p-1-a1809bf1">
+        <name>
+          <text>Деталь біля П1</text>
+        </name>
+        <graphics>
+          <position x="280" y="420"/>
+        </graphics>
+      </place>
+      <place id="p-1-45087d57">
+        <name>
+          <text>П1 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="490" y="270"/>
+        </graphics>
+      </place>
+      <place id="p-2-32393633">
+        <name>
+          <text>Деталь біля П2</text>
+        </name>
+        <graphics>
+          <position x="520" y="420"/>
+        </graphics>
+      </place>
+      <place id="p-2-183c85d1">
+        <name>
+          <text>П2 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="730" y="270"/>
+        </graphics>
+      </place>
+      <place id="p-3-0d15e695">
+        <name>
+          <text>Деталь біля П3</text>
+        </name>
+        <graphics>
+          <position x="760" y="420"/>
+        </graphics>
+      </place>
+      <place id="p-3-66137bf6">
+        <name>
+          <text>П3 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="970" y="270"/>
+        </graphics>
+      </place>
+      <place id="p-4-e6ac0708">
+        <name>
+          <text>Деталь біля П4</text>
+        </name>
+        <graphics>
+          <position x="1000" y="420"/>
+        </graphics>
+      </place>
+      <place id="p-4-116cb62b">
+        <name>
+          <text>П4 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1210" y="270"/>
+        </graphics>
+      </place>
+      <place id="p-5-56a6708b">
+        <name>
+          <text>Деталь біля П5</text>
+        </name>
+        <graphics>
+          <position x="1240" y="420"/>
+        </graphics>
+      </place>
+      <place id="p-5-0dad0a34">
+        <name>
+          <text>П5 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1450" y="270"/>
+        </graphics>
+      </place>
+      <place id="p-1dbe9802">
+        <name>
+          <text>Оброблені деталі</text>
+        </name>
+        <graphics>
+          <position x="800" y="50"/>
+        </graphics>
+      </place>
+      <transition id="t-a6e926bd">
+        <name>
+          <text>Надходження</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>0.25</timeDelay>
+          <delayMeanValue>0.25</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="150" y="420"/>
+        </graphics>
+      </transition>
+      <transition id="t-1-5de62c86">
+        <name>
+          <text>Обробка П1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="381" y="270"/>
+        </graphics>
+      </transition>
+      <transition id="t-2-08b0c49c">
+        <name>
+          <text>Рух до П2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="400" y="420"/>
+        </graphics>
+      </transition>
+      <transition id="t-2-2312601b">
+        <name>
+          <text>Обробка П2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="621" y="270"/>
+        </graphics>
+      </transition>
+      <transition id="t-3-1b9a2a9a">
+        <name>
+          <text>Рух до П3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="640" y="420"/>
+        </graphics>
+      </transition>
+      <transition id="t-3-96af8b4c">
+        <name>
+          <text>Обробка П3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="861" y="270"/>
+        </graphics>
+      </transition>
+      <transition id="t-4-17a1934c">
+        <name>
+          <text>Рух до П4</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="880" y="420"/>
+        </graphics>
+      </transition>
+      <transition id="t-4-fd184423">
+        <name>
+          <text>Обробка П4</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1101" y="270"/>
+        </graphics>
+      </transition>
+      <transition id="t-5-070cab31">
+        <name>
+          <text>Рух до П5</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="1120" y="420"/>
+        </graphics>
+      </transition>
+      <transition id="t-5-375bd3a4">
+        <name>
+          <text>Обробка П5</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1341" y="270"/>
+        </graphics>
+      </transition>
+      <transition id="t-1-9955ce17">
+        <name>
+          <text>Повернення до П1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="760" y="760"/>
+        </graphics>
+      </transition>
+      <arc id="arc-d3803786" source="p-7ff05e2c" target="t-a6e926bd">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-5c1672c9" source="p-1-a1809bf1" target="t-1-5de62c86">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1a52e65e" source="p-1-45087d57" target="t-1-5de62c86">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f52fbfbd" source="p-1-a1809bf1" target="t-2-08b0c49c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-b39b1d9d" source="p-2-32393633" target="t-2-2312601b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-6c33bdd6" source="p-2-183c85d1" target="t-2-2312601b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-a86909bd" source="p-2-32393633" target="t-3-1b9a2a9a">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-440eebff" source="p-3-0d15e695" target="t-3-96af8b4c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-c21252f1" source="p-3-66137bf6" target="t-3-96af8b4c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1465d6a8" source="p-3-0d15e695" target="t-4-17a1934c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-5a17a8cd" source="p-4-e6ac0708" target="t-4-fd184423">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1526c1ae" source="p-4-116cb62b" target="t-4-fd184423">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-d177cf4a" source="p-4-e6ac0708" target="t-5-070cab31">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-dfc304ac" source="p-5-56a6708b" target="t-5-375bd3a4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f1968795" source="p-5-0dad0a34" target="t-5-375bd3a4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-d917e06a" source="p-5-56a6708b" target="t-1-9955ce17">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-30529116" source="t-a6e926bd" target="p-7ff05e2c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-7b1bc555" source="t-a6e926bd" target="p-1-a1809bf1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-2589f6aa" source="t-1-5de62c86" target="p-1-45087d57">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-5883ea18" source="t-1-5de62c86" target="p-1dbe9802">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-b0e1aec5" source="t-2-08b0c49c" target="p-2-32393633">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-05c63a01" source="t-2-2312601b" target="p-2-183c85d1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-5a04742f" source="t-2-2312601b" target="p-1dbe9802">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f895dc6d" source="t-3-1b9a2a9a" target="p-3-0d15e695">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-b750cc58" source="t-3-96af8b4c" target="p-3-66137bf6">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-a91ef1b2" source="t-3-96af8b4c" target="p-1dbe9802">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-14144cb1" source="t-4-17a1934c" target="p-4-e6ac0708">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-b57ed266" source="t-4-fd184423" target="p-4-116cb62b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-e3a176d6" source="t-4-fd184423" target="p-1dbe9802">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-cfea4a9e" source="t-5-070cab31" target="p-5-56a6708b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-7782bac9" source="t-5-375bd3a4" target="p-5-0dad0a34">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-c519279f" source="t-5-375bd3a4" target="p-1dbe9802">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-d44e80cb" source="t-1-9955ce17" target="p-1-a1809bf1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.3.0">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>

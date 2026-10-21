@@ -1,0 +1,271 @@
+{
+ "name": "Inventory",
+ "places": [
+  {
+   "name": "Генератор попиту",
+   "mark": 1
+  },
+  {
+   "name": "Покупець",
+   "mark": 0
+  },
+  {
+   "name": "Запас",
+   "mark": 72
+  },
+  {
+   "name": "Продано",
+   "mark": 0
+  },
+  {
+   "name": "Відкладений попит",
+   "mark": 0
+  },
+  {
+   "name": "Втрачені продажі",
+   "mark": 0
+  },
+  {
+   "name": "Нестача до рівня",
+   "mark": 0
+  },
+  {
+   "name": "Таймер перегляду",
+   "mark": 1
+  },
+  {
+   "name": "Перегляд",
+   "mark": 0
+  },
+  {
+   "name": "Формування замовлення",
+   "mark": 0
+  }
+ ],
+ "transitions": [
+  {
+   "name": "Надходження покупця",
+   "distribution": "exp",
+   "mean": 0.2000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Генератор попиту",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Генератор попиту",
+     "n": 1
+    },
+    {
+     "place": "Покупець",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Продаж",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 3,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Покупець",
+     "n": 1
+    },
+    {
+     "place": "Запас",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Продано",
+     "n": 1
+    },
+    {
+     "place": "Нестача до рівня",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Відмова від покупки",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 1,
+   "probability": 0.8000000000,
+   "inputs": [
+    {
+     "place": "Покупець",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Втрачені продажі",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Повторне замовлення",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 1,
+   "probability": 0.2000000000,
+   "inputs": [
+    {
+     "place": "Покупець",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Відкладений попит",
+     "n": 1
+    },
+    {
+     "place": "Нестача до рівня",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Видача відкладеного",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 4,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Запас",
+     "n": 1
+    },
+    {
+     "place": "Відкладений попит",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Продано",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Перегляд запасу",
+   "distribution": "const",
+   "mean": 4.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Таймер перегляду",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Таймер перегляду",
+     "n": 1
+    },
+    {
+     "place": "Перегляд",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Рішення замовити",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 2,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Перегляд",
+     "n": 1
+    }
+   ],
+   "info_inputs": [
+    {
+     "place": "Нестача до рівня",
+     "n": 54
+    }
+   ],
+   "outputs": [
+    {
+     "place": "Формування замовлення",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Без замовлення",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Перегляд",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": []
+  },
+  {
+   "name": "Доставка",
+   "distribution": "const",
+   "mean": 3.000000000,
+   "priority": 1,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Нестача до рівня",
+     "n": 1
+    }
+   ],
+   "info_inputs": [
+    {
+     "place": "Формування замовлення",
+     "n": 1
+    }
+   ],
+   "outputs": [
+    {
+     "place": "Запас",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Кінець замовлення",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Формування замовлення",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": []
+  }
+ ]
+}

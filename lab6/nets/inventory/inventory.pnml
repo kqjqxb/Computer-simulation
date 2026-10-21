@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Inventory" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Inventory</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject index="0" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="p-03e8b686">
+        <name>
+          <text>Генератор попиту</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="-60" y="240"/>
+        </graphics>
+      </place>
+      <place id="p-e719a13d">
+        <name>
+          <text>Покупець</text>
+        </name>
+        <graphics>
+          <position x="280" y="240"/>
+        </graphics>
+      </place>
+      <place id="p-4cbd653a">
+        <name>
+          <text>Запас</text>
+        </name>
+        <initialMarking>
+          <text>72</text>
+        </initialMarking>
+        <graphics>
+          <position x="640" y="240"/>
+        </graphics>
+      </place>
+      <place id="p-943a8b36">
+        <name>
+          <text>Продано</text>
+        </name>
+        <graphics>
+          <position x="1000" y="400"/>
+        </graphics>
+      </place>
+      <place id="p-0101478b">
+        <name>
+          <text>Відкладений попит</text>
+        </name>
+        <graphics>
+          <position x="600" y="400"/>
+        </graphics>
+      </place>
+      <place id="p-317fd088">
+        <name>
+          <text>Втрачені продажі</text>
+        </name>
+        <graphics>
+          <position x="600" y="100"/>
+        </graphics>
+      </place>
+      <place id="p-cb8b4092">
+        <name>
+          <text>Нестача до рівня</text>
+        </name>
+        <graphics>
+          <position x="220" y="560"/>
+        </graphics>
+      </place>
+      <place id="p-d2f97f90">
+        <name>
+          <text>Таймер перегляду</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="-60" y="840"/>
+        </graphics>
+      </place>
+      <place id="p-d083c861">
+        <name>
+          <text>Перегляд</text>
+        </name>
+        <graphics>
+          <position x="280" y="840"/>
+        </graphics>
+      </place>
+      <place id="p-f04e1f84">
+        <name>
+          <text>Формування замовлення</text>
+        </name>
+        <graphics>
+          <position x="640" y="840"/>
+        </graphics>
+      </place>
+      <transition id="t-2964cca3">
+        <name>
+          <text>Надходження покупця</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>0.2</timeDelay>
+          <delayMeanValue>0.2</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="120" y="240"/>
+        </graphics>
+      </transition>
+      <transition id="t-a82ea366">
+        <name>
+          <text>Продаж</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <priority>3</priority>
+        </toolspecific>
+        <graphics>
+          <position x="432" y="240"/>
+        </graphics>
+      </transition>
+      <transition id="t-dcbcacb4">
+        <name>
+          <text>Відмова від покупки</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <priority>1</priority>
+          <probability>0.8</probability>
+        </toolspecific>
+        <graphics>
+          <position x="431" y="100"/>
+        </graphics>
+      </transition>
+      <transition id="t-8b62e813">
+        <name>
+          <text>Повторне замовлення</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <priority>1</priority>
+          <probability>0.2</probability>
+        </toolspecific>
+        <graphics>
+          <position x="431" y="400"/>
+        </graphics>
+      </transition>
+      <transition id="t-adfd4ed0">
+        <name>
+          <text>Видача відкладеного</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <priority>4</priority>
+        </toolspecific>
+        <graphics>
+          <position x="782" y="400"/>
+        </graphics>
+      </transition>
+      <transition id="t-04dadd11">
+        <name>
+          <text>Перегляд запасу</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>4.0</timeDelay>
+          <delayMeanValue>4.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="120" y="840"/>
+        </graphics>
+      </transition>
+      <transition id="t-6e9f2e89">
+        <name>
+          <text>Рішення замовити</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <priority>2</priority>
+        </toolspecific>
+        <graphics>
+          <position x="431" y="840"/>
+        </graphics>
+      </transition>
+      <transition id="t-1ce4ab82">
+        <name>
+          <text>Без замовлення</text>
+        </name>
+        <graphics>
+          <position x="430" y="980"/>
+        </graphics>
+      </transition>
+      <transition id="t-f2e41bb5">
+        <name>
+          <text>Доставка</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>3.0</timeDelay>
+          <delayMeanValue>3.0</delayMeanValue>
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="821" y="620"/>
+        </graphics>
+      </transition>
+      <transition id="t-f2779ae0">
+        <name>
+          <text>Кінець замовлення</text>
+        </name>
+        <graphics>
+          <position x="860" y="840"/>
+        </graphics>
+      </transition>
+      <arc id="arc-575ff2bc" source="p-03e8b686" target="t-2964cca3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1094abc8" source="p-e719a13d" target="t-a82ea366">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f12f69df" source="p-4cbd653a" target="t-a82ea366">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-6cb29af7" source="p-e719a13d" target="t-dcbcacb4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-bf5cb3d3" source="p-e719a13d" target="t-8b62e813">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-cee2ec25" source="p-4cbd653a" target="t-adfd4ed0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1f8d2426" source="p-0101478b" target="t-adfd4ed0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f14d57c5" source="p-d2f97f90" target="t-04dadd11">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-aa3db565" source="p-d083c861" target="t-6e9f2e89">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-736e4bd6" source="p-cb8b4092" target="t-6e9f2e89">
+        <inscription>
+          <text>54</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="arc-7b6b9800" source="p-d083c861" target="t-1ce4ab82">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-2427a577" source="p-cb8b4092" target="t-f2e41bb5">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-51ee14d7" source="p-f04e1f84" target="t-f2e41bb5">
+        <inscription>
+          <text>1</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="arc-559846e8" source="p-f04e1f84" target="t-f2779ae0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-90506f4b" source="t-2964cca3" target="p-03e8b686">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-218727de" source="t-2964cca3" target="p-e719a13d">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1ed55e92" source="t-a82ea366" target="p-943a8b36">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-1f750e34" source="t-a82ea366" target="p-cb8b4092">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-26cf8df8" source="t-dcbcacb4" target="p-317fd088">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-ee651ae0" source="t-8b62e813" target="p-0101478b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-0e388fb6" source="t-8b62e813" target="p-cb8b4092">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-97654c5d" source="t-adfd4ed0" target="p-943a8b36">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-9dd39020" source="t-04dadd11" target="p-d2f97f90">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-acbc5266" source="t-04dadd11" target="p-d083c861">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-9339f7cb" source="t-6e9f2e89" target="p-f04e1f84">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-974cbc31" source="t-f2e41bb5" target="p-4cbd653a">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.3.0">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>
