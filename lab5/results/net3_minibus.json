@@ -1,0 +1,726 @@
+{
+ "name": "Маршрут мікроавтобусів, n = 1",
+ "places": [
+  {
+   "name": "Генератор З1",
+   "mark": 1
+  },
+  {
+   "name": "Пасажир на З1",
+   "mark": 0
+  },
+  {
+   "name": "Черга на З1",
+   "mark": 0
+  },
+  {
+   "name": "Місця в черзі З1",
+   "mark": 30
+  },
+  {
+   "name": "Пішли з З1",
+   "mark": 0
+  },
+  {
+   "name": "Генератор З2",
+   "mark": 1
+  },
+  {
+   "name": "Пасажир на З2",
+   "mark": 0
+  },
+  {
+   "name": "Черга на З2",
+   "mark": 0
+  },
+  {
+   "name": "Місця в черзі З2",
+   "mark": 30
+  },
+  {
+   "name": "Пішли з З2",
+   "mark": 0
+  },
+  {
+   "name": "A на З1",
+   "mark": 1
+  },
+  {
+   "name": "Вільні місця A на З1",
+   "mark": 1
+  },
+  {
+   "name": "Пасажири в A на З1",
+   "mark": 0
+  },
+  {
+   "name": "A прибув на З1",
+   "mark": 0
+  },
+  {
+   "name": "A на З2",
+   "mark": 0
+  },
+  {
+   "name": "Вільні місця A на З2",
+   "mark": 0
+  },
+  {
+   "name": "Пасажири в A на З2",
+   "mark": 0
+  },
+  {
+   "name": "A прибув на З2",
+   "mark": 0
+  },
+  {
+   "name": "B на З1",
+   "mark": 0
+  },
+  {
+   "name": "Вільні місця B на З1",
+   "mark": 0
+  },
+  {
+   "name": "Пасажири в B на З1",
+   "mark": 0
+  },
+  {
+   "name": "B прибув на З1",
+   "mark": 0
+  },
+  {
+   "name": "B на З2",
+   "mark": 1
+  },
+  {
+   "name": "Вільні місця B на З2",
+   "mark": 1
+  },
+  {
+   "name": "Пасажири в B на З2",
+   "mark": 0
+  },
+  {
+   "name": "B прибув на З2",
+   "mark": 0
+  },
+  {
+   "name": "Перевезені пасажири",
+   "mark": 0
+  }
+ ],
+ "transitions": [
+  {
+   "name": "Прихід на З1",
+   "distribution": "unif",
+   "mean": 0.5,
+   "deviation": 0.2,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Генератор З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Генератор З1",
+     "n": 1
+    },
+    {
+     "place": "Пасажир на З1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Посадка з черги в A на З1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 6,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Черга на З1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця A на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в A на З1",
+     "n": 1,
+     "carry": "Черга на З1"
+    },
+    {
+     "place": "Місця в черзі З1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Посадка в A на З1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 4,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця A на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в A на З1",
+     "n": 1,
+     "carry": "Пасажир на З1"
+    }
+   ]
+  },
+  {
+   "name": "Посадка з черги в B на З1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 5,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Черга на З1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця B на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в B на З1",
+     "n": 1,
+     "carry": "Черга на З1"
+    },
+    {
+     "place": "Місця в черзі З1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Посадка в B на З1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 3,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця B на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в B на З1",
+     "n": 1,
+     "carry": "Пасажир на З1"
+    }
+   ]
+  },
+  {
+   "name": "Стати в чергу на З1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 2,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З1",
+     "n": 1
+    },
+    {
+     "place": "Місця в черзі З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга на З1",
+     "n": 1,
+     "carry": "Пасажир на З1"
+    }
+   ]
+  },
+  {
+   "name": "Відмова на З1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 1,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пішли з З1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Прихід на З2",
+   "distribution": "unif",
+   "mean": 0.5,
+   "deviation": 0.2,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Генератор З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Генератор З2",
+     "n": 1
+    },
+    {
+     "place": "Пасажир на З2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Посадка з черги в A на З2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 6,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Черга на З2",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця A на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в A на З2",
+     "n": 1,
+     "carry": "Черга на З2"
+    },
+    {
+     "place": "Місця в черзі З2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Посадка в A на З2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 4,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З2",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця A на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в A на З2",
+     "n": 1,
+     "carry": "Пасажир на З2"
+    }
+   ]
+  },
+  {
+   "name": "Посадка з черги в B на З2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 5,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Черга на З2",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця B на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в B на З2",
+     "n": 1,
+     "carry": "Черга на З2"
+    },
+    {
+     "place": "Місця в черзі З2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Посадка в B на З2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 3,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З2",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця B на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пасажири в B на З2",
+     "n": 1,
+     "carry": "Пасажир на З2"
+    }
+   ]
+  },
+  {
+   "name": "Стати в чергу на З2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 2,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З2",
+     "n": 1
+    },
+    {
+     "place": "Місця в черзі З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга на З2",
+     "n": 1,
+     "carry": "Пасажир на З2"
+    }
+   ]
+  },
+  {
+   "name": "Відмова на З2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 1,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Пасажир на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Пішли з З2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Рейс A З1→З2",
+   "distribution": "unif",
+   "mean": 20.0,
+   "deviation": 5.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "A на З1",
+     "n": 1
+    },
+    {
+     "place": "Пасажири в A на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "A прибув на З2",
+     "n": 1
+    },
+    {
+     "place": "Перевезені пасажири",
+     "n": 1,
+     "carry": "Пасажири в A на З1"
+    }
+   ]
+  },
+  {
+   "name": "Висадка A на З2",
+   "distribution": "unif",
+   "mean": 5.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "A прибув на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "A на З2",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця A на З2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Рейс A З2→З1",
+   "distribution": "unif",
+   "mean": 20.0,
+   "deviation": 5.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "A на З2",
+     "n": 1
+    },
+    {
+     "place": "Пасажири в A на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "A прибув на З1",
+     "n": 1
+    },
+    {
+     "place": "Перевезені пасажири",
+     "n": 1,
+     "carry": "Пасажири в A на З2"
+    }
+   ]
+  },
+  {
+   "name": "Висадка A на З1",
+   "distribution": "unif",
+   "mean": 5.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "A прибув на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "A на З1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця A на З1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Рейс B З1→З2",
+   "distribution": "unif",
+   "mean": 30.0,
+   "deviation": 5.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "B на З1",
+     "n": 1
+    },
+    {
+     "place": "Пасажири в B на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "B прибув на З2",
+     "n": 1
+    },
+    {
+     "place": "Перевезені пасажири",
+     "n": 1,
+     "carry": "Пасажири в B на З1"
+    }
+   ]
+  },
+  {
+   "name": "Висадка B на З2",
+   "distribution": "unif",
+   "mean": 5.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "B прибув на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "B на З2",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця B на З2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Рейс B З2→З1",
+   "distribution": "unif",
+   "mean": 30.0,
+   "deviation": 5.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "B на З2",
+     "n": 1
+    },
+    {
+     "place": "Пасажири в B на З2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "B прибув на З1",
+     "n": 1
+    },
+    {
+     "place": "Перевезені пасажири",
+     "n": 1,
+     "carry": "Пасажири в B на З2"
+    }
+   ]
+  },
+  {
+   "name": "Висадка B на З1",
+   "distribution": "unif",
+   "mean": 5.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "B прибув на З1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "B на З1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця B на З1",
+     "n": 1
+    }
+   ]
+  }
+ ],
+ "parameter": "опис наведено для n = 1; n – кількість місць: кратність дуг «Пасажири в … → Рейс …», «Рейс … → Перевезені пасажири», «Висадка … → Вільні місця …» і початкове маркування «Вільні місця A на З1», «Вільні місця B на З2»"
+}

@@ -1,0 +1,557 @@
+{
+ "name": "Гнучка виробнича система, варіант 1",
+ "places": [
+  {
+   "name": "Генератор",
+   "mark": 1
+  },
+  {
+   "name": "Деталь на вході",
+   "mark": 0
+  },
+  {
+   "name": "Вільні місця В1",
+   "mark": 3
+  },
+  {
+   "name": "Деталь на В1",
+   "mark": 0
+  },
+  {
+   "name": "Оброблена на В1",
+   "mark": 0
+  },
+  {
+   "name": "Вільні місця В2",
+   "mark": 3
+  },
+  {
+   "name": "Деталь на В2",
+   "mark": 0
+  },
+  {
+   "name": "Оброблена на В2",
+   "mark": 0
+  },
+  {
+   "name": "Склад",
+   "mark": 0
+  },
+  {
+   "name": "Робот біля деталі (вхід–В1)",
+   "mark": 0
+  },
+  {
+   "name": "Деталь захоплена (вхід–В1)",
+   "mark": 0
+  },
+  {
+   "name": "Деталь доставлена (вхід–В1)",
+   "mark": 0
+  },
+  {
+   "name": "Робот біля деталі (В1–В2)",
+   "mark": 0
+  },
+  {
+   "name": "Деталь захоплена (В1–В2)",
+   "mark": 0
+  },
+  {
+   "name": "Деталь доставлена (В1–В2)",
+   "mark": 0
+  },
+  {
+   "name": "Робот біля деталі (В2–склад)",
+   "mark": 0
+  },
+  {
+   "name": "Деталь захоплена (В2–склад)",
+   "mark": 0
+  },
+  {
+   "name": "Деталь доставлена (В2–склад)",
+   "mark": 0
+  },
+  {
+   "name": "Робот 1 вільний",
+   "mark": 1
+  },
+  {
+   "name": "Робот 1 повертається",
+   "mark": 0
+  },
+  {
+   "name": "Робот 2 вільний",
+   "mark": 1
+  },
+  {
+   "name": "Робот 2 повертається",
+   "mark": 0
+  },
+  {
+   "name": "Робот 3 вільний",
+   "mark": 1
+  },
+  {
+   "name": "Робот 3 повертається",
+   "mark": 0
+  }
+ ],
+ "transitions": [
+  {
+   "name": "Надходження",
+   "distribution": "exp",
+   "mean": 40.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Генератор",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Генератор",
+     "n": 1
+    },
+    {
+     "place": "Деталь на вході",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Обробка на В1",
+   "distribution": "norm",
+   "mean": 60.0,
+   "deviation": 10.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь на В1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Оброблена на В1",
+     "n": 1,
+     "carry": "Деталь на В1"
+    }
+   ]
+  },
+  {
+   "name": "Обробка на В2",
+   "distribution": "exp",
+   "mean": 100.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь на В2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Оброблена на В2",
+     "n": 1,
+     "carry": "Деталь на В2"
+    }
+   ]
+  },
+  {
+   "name": "Призначення робота 1",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь на вході",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця В1",
+     "n": 1
+    },
+    {
+     "place": "Робот 1 вільний",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Робот біля деталі (вхід–В1)",
+     "n": 1,
+     "carry": "Деталь на вході"
+    }
+   ]
+  },
+  {
+   "name": "Захоплення (вхід–В1)",
+   "distribution": "unif",
+   "mean": 8.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Робот біля деталі (вхід–В1)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь захоплена (вхід–В1)",
+     "n": 1,
+     "carry": "Робот біля деталі (вхід–В1)"
+    }
+   ]
+  },
+  {
+   "name": "Переміщення (вхід–В1)",
+   "distribution": "const",
+   "mean": 6.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь захоплена (вхід–В1)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь доставлена (вхід–В1)",
+     "n": 1,
+     "carry": "Деталь захоплена (вхід–В1)"
+    }
+   ]
+  },
+  {
+   "name": "Вивільнення (вхід–В1)",
+   "distribution": "unif",
+   "mean": 8.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь доставлена (вхід–В1)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь на В1",
+     "n": 1,
+     "carry": "Деталь доставлена (вхід–В1)"
+    },
+    {
+     "place": "Робот 1 повертається",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Повернення робота 1",
+   "distribution": "const",
+   "mean": 6.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Робот 1 повертається",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Робот 1 вільний",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Призначення робота 2",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Оброблена на В1",
+     "n": 1
+    },
+    {
+     "place": "Вільні місця В2",
+     "n": 1
+    },
+    {
+     "place": "Робот 2 вільний",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Робот біля деталі (В1–В2)",
+     "n": 1,
+     "carry": "Оброблена на В1"
+    }
+   ]
+  },
+  {
+   "name": "Захоплення (В1–В2)",
+   "distribution": "unif",
+   "mean": 8.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Робот біля деталі (В1–В2)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь захоплена (В1–В2)",
+     "n": 1,
+     "carry": "Робот біля деталі (В1–В2)"
+    },
+    {
+     "place": "Вільні місця В1",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Переміщення (В1–В2)",
+   "distribution": "const",
+   "mean": 7.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь захоплена (В1–В2)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь доставлена (В1–В2)",
+     "n": 1,
+     "carry": "Деталь захоплена (В1–В2)"
+    }
+   ]
+  },
+  {
+   "name": "Вивільнення (В1–В2)",
+   "distribution": "unif",
+   "mean": 8.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь доставлена (В1–В2)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь на В2",
+     "n": 1,
+     "carry": "Деталь доставлена (В1–В2)"
+    },
+    {
+     "place": "Робот 2 повертається",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Повернення робота 2",
+   "distribution": "const",
+   "mean": 7.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Робот 2 повертається",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Робот 2 вільний",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Призначення робота 3",
+   "distribution": "const",
+   "mean": 0.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Оброблена на В2",
+     "n": 1
+    },
+    {
+     "place": "Робот 3 вільний",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Робот біля деталі (В2–склад)",
+     "n": 1,
+     "carry": "Оброблена на В2"
+    }
+   ]
+  },
+  {
+   "name": "Захоплення (В2–склад)",
+   "distribution": "unif",
+   "mean": 8.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Робот біля деталі (В2–склад)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь захоплена (В2–склад)",
+     "n": 1,
+     "carry": "Робот біля деталі (В2–склад)"
+    },
+    {
+     "place": "Вільні місця В2",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Переміщення (В2–склад)",
+   "distribution": "const",
+   "mean": 5.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь захоплена (В2–склад)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Деталь доставлена (В2–склад)",
+     "n": 1,
+     "carry": "Деталь захоплена (В2–склад)"
+    }
+   ]
+  },
+  {
+   "name": "Вивільнення (В2–склад)",
+   "distribution": "unif",
+   "mean": 8.0,
+   "deviation": 1.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Деталь доставлена (В2–склад)",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Склад",
+     "n": 1,
+     "carry": "Деталь доставлена (В2–склад)"
+    },
+    {
+     "place": "Робот 3 повертається",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Повернення робота 3",
+   "distribution": "const",
+   "mean": 5.0,
+   "deviation": 0.0,
+   "priority": 0,
+   "probability": 1.0,
+   "channels": null,
+   "inputs": [
+    {
+     "place": "Робот 3 повертається",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Робот 3 вільний",
+     "n": 1
+    }
+   ]
+  }
+ ]
+}
