@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="n" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Мережа масового обслуговування</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Генератор</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="170" index="0" name="Генератор" priority="0" width="420" x="-80" y="435"/>
+      </toolspecific>
+      <place id="p-4f89e0fa">
+        <name>
+          <text>Генератор</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="0" y="520"/>
+        </graphics>
+      </place>
+      <referencePlace id="p-a-ddd18fe4" ref="p-a-fc8e4e2e">
+        <name>
+          <text>Черга A</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="260" y="520"/>
+        </graphics>
+      </referencePlace>
+      <transition id="t-e72abb3a">
+        <name>
+          <text>Надходження</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="130" y="520"/>
+        </graphics>
+      </transition>
+      <arc id="arc-246bbb3c" source="p-4f89e0fa" target="t-e72abb3a">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-8af7a910" source="t-e72abb3a" target="p-4f89e0fa">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-c6813104" source="t-e72abb3a" target="p-a-ddd18fe4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <page id="object1">
+      <name>
+        <text>СМО A</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="260" index="1" name="СМО A" priority="0" width="500" x="250" y="435"/>
+      </toolspecific>
+      <place id="p-a-fc8e4e2e">
+        <name>
+          <text>Черга A</text>
+        </name>
+        <graphics>
+          <position x="330" y="520"/>
+        </graphics>
+      </place>
+      <place id="p-a-be061d38">
+        <name>
+          <text>Вільні канали A</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="670" y="615"/>
+        </graphics>
+      </place>
+      <place id="p-a-db03dc57">
+        <name>
+          <text>Обслужені A</text>
+        </name>
+        <graphics>
+          <position x="630" y="520"/>
+        </graphics>
+      </place>
+      <transition id="t-a-45cd054d">
+        <name>
+          <text>Обслуговування A</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>0.6</timeDelay>
+          <delayMeanValue>0.6</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="480" y="520"/>
+        </graphics>
+      </transition>
+      <arc id="arc-a6483d6a" source="p-a-fc8e4e2e" target="t-a-45cd054d">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-a3b90c90" source="p-a-be061d38" target="t-a-45cd054d">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-85cdd8f5" source="t-a-45cd054d" target="p-a-be061d38">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-a5cbdd20" source="t-a-45cd054d" target="p-a-db03dc57">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <page id="object2">
+      <name>
+        <text>Розгалуження 1</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="320" index="2" name="Розгалуження 1" priority="0" width="420" x="660" y="360"/>
+      </toolspecific>
+      <referencePlace id="p-a-a765489d" ref="p-a-db03dc57">
+        <name>
+          <text>Обслужені A</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="740" y="520"/>
+        </graphics>
+      </referencePlace>
+      <referencePlace id="p-b1-7758e324" ref="p-b1-d7bf3424">
+        <name>
+          <text>Черга B1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="1000" y="445"/>
+        </graphics>
+      </referencePlace>
+      <referencePlace id="p-c-10d6d98b" ref="p-c-a9dff63b">
+        <name>
+          <text>Черга C</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="1000" y="595"/>
+        </graphics>
+      </referencePlace>
+      <transition id="t-b-c0980a3a">
+        <name>
+          <text>На B</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <probability>0.7</probability>
+        </toolspecific>
+        <graphics>
+          <position x="870" y="445"/>
+        </graphics>
+      </transition>
+      <transition id="t-c-3e04d361">
+        <name>
+          <text>На C</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <probability>0.3</probability>
+        </toolspecific>
+        <graphics>
+          <position x="870" y="595"/>
+        </graphics>
+      </transition>
+      <arc id="arc-a73d9f21" source="p-a-a765489d" target="t-b-c0980a3a">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-a98f2730" source="p-a-a765489d" target="t-c-3e04d361">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-9d5bb13a" source="t-b-c0980a3a" target="p-b1-7758e324">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-529734f8" source="t-c-3e04d361" target="p-c-10d6d98b">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <page id="object3">
+      <name>
+        <text>СМО B1</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="260" index="3" name="СМО B1" priority="0" width="500" x="1000" y="175"/>
+      </toolspecific>
+      <place id="p-b1-d7bf3424">
+        <name>
+          <text>Черга B1</text>
+        </name>
+        <graphics>
+          <position x="1080" y="260"/>
+        </graphics>
+      </place>
+      <place id="p-b1-6b94c204">
+        <name>
+          <text>Вільні канали B1</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1420" y="355"/>
+        </graphics>
+      </place>
+      <place id="p-b1-5dad6dc6">
+        <name>
+          <text>Обслужені B1</text>
+        </name>
+        <graphics>
+          <position x="1380" y="260"/>
+        </graphics>
+      </place>
+      <transition id="t-b1-e232fa92">
+        <name>
+          <text>Обслуговування B1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1230" y="260"/>
+        </graphics>
+      </transition>
+      <arc id="arc-e1eff546" source="p-b1-d7bf3424" target="t-b1-e232fa92">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-ec945daf" source="p-b1-6b94c204" target="t-b1-e232fa92">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f82f68b4" source="t-b1-e232fa92" target="p-b1-6b94c204">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-e09dfd03" source="t-b1-e232fa92" target="p-b1-5dad6dc6">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <page id="object4">
+      <name>
+        <text>СМО B2</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="260" index="4" name="СМО B2" priority="0" width="500" x="1000" y="435"/>
+      </toolspecific>
+      <referencePlace id="p-b2-4934bea1" ref="p-b1-d7bf3424">
+        <name>
+          <text>Черга B2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="1080" y="520"/>
+        </graphics>
+      </referencePlace>
+      <place id="p-b2-bb0d77d0">
+        <name>
+          <text>Вільні канали B2</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1420" y="615"/>
+        </graphics>
+      </place>
+      <referencePlace id="p-b2-79334428" ref="p-b1-5dad6dc6">
+        <name>
+          <text>Обслужені B2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="1380" y="520"/>
+        </graphics>
+      </referencePlace>
+      <transition id="t-b2-59a97f6d">
+        <name>
+          <text>Обслуговування B2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1230" y="520"/>
+        </graphics>
+      </transition>
+      <arc id="arc-d8ad5359" source="p-b2-4934bea1" target="t-b2-59a97f6d">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-d6d8592d" source="p-b2-bb0d77d0" target="t-b2-59a97f6d">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-ee0a7995" source="t-b2-59a97f6d" target="p-b2-bb0d77d0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-3f815952" source="t-b2-59a97f6d" target="p-b2-79334428">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <page id="object5">
+      <name>
+        <text>СМО C</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="260" index="5" name="СМО C" priority="0" width="500" x="1000" y="715"/>
+      </toolspecific>
+      <place id="p-c-a9dff63b">
+        <name>
+          <text>Черга C</text>
+        </name>
+        <graphics>
+          <position x="1080" y="800"/>
+        </graphics>
+      </place>
+      <place id="p-c-f41ac0d0">
+        <name>
+          <text>Вільні канали C</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1420" y="895"/>
+        </graphics>
+      </place>
+      <place id="p-c-48ac965d">
+        <name>
+          <text>Обслужені C</text>
+        </name>
+        <graphics>
+          <position x="1380" y="800"/>
+        </graphics>
+      </place>
+      <transition id="t-c-45c2227c">
+        <name>
+          <text>Обслуговування C</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <timeDelay>1.5</timeDelay>
+          <delayMeanValue>1.5</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1230" y="800"/>
+        </graphics>
+      </transition>
+      <arc id="arc-47f6e2f5" source="p-c-a9dff63b" target="t-c-45c2227c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-5c4aa18f" source="p-c-f41ac0d0" target="t-c-45c2227c">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-845dec37" source="t-c-45c2227c" target="p-c-f41ac0d0">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-3361e597" source="t-c-45c2227c" target="p-c-48ac965d">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <page id="object6">
+      <name>
+        <text>Розгалуження 2</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.3.0">
+        <petriObject height="320" index="6" name="Розгалуження 2" priority="0" width="420" x="1420" y="100"/>
+      </toolspecific>
+      <referencePlace id="p-b1-48d3c270" ref="p-b1-5dad6dc6">
+        <name>
+          <text>Обслужені B1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="1500" y="260"/>
+        </graphics>
+      </referencePlace>
+      <referencePlace id="p-a-a0f416f1" ref="p-a-fc8e4e2e">
+        <name>
+          <text>Черга A</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <referenceRole>fusion</referenceRole>
+        </toolspecific>
+        <graphics>
+          <position x="1760" y="185"/>
+        </graphics>
+      </referencePlace>
+      <place id="p-ee5d31c9">
+        <name>
+          <text>Вийшли з мережі</text>
+        </name>
+        <graphics>
+          <position x="1760" y="335"/>
+        </graphics>
+      </place>
+      <transition id="t-a-bebc31e7">
+        <name>
+          <text>Повтор на A</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <probability>0.2</probability>
+        </toolspecific>
+        <graphics>
+          <position x="1630" y="185"/>
+        </graphics>
+      </transition>
+      <transition id="t-b-2a8a70ad">
+        <name>
+          <text>Вихід з B</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.3.0">
+          <probability>0.8</probability>
+        </toolspecific>
+        <graphics>
+          <position x="1630" y="335"/>
+        </graphics>
+      </transition>
+      <arc id="arc-67926eac" source="p-b1-48d3c270" target="t-a-bebc31e7">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-74985a49" source="p-b1-48d3c270" target="t-b-2a8a70ad">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-73839718" source="t-a-bebc31e7" target="p-a-a0f416f1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="arc-f15119ca" source="t-b-2a8a70ad" target="p-ee5d31c9">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.3.0">
+      <petriObjectLinks>
+        <link sourceElement="1" sourceElementId="p-a-ddd18fe4" sourceObject="0" targetElement="0" targetElementId="p-a-fc8e4e2e" targetObject="1" type="placeFusion"/>
+        <link sourceElement="0" sourceElementId="p-a-a765489d" sourceObject="2" targetElement="2" targetElementId="p-a-db03dc57" targetObject="1" type="placeFusion"/>
+        <link sourceElement="1" sourceElementId="p-b1-7758e324" sourceObject="2" targetElement="0" targetElementId="p-b1-d7bf3424" targetObject="3" type="placeFusion"/>
+        <link sourceElement="2" sourceElementId="p-c-10d6d98b" sourceObject="2" targetElement="0" targetElementId="p-c-a9dff63b" targetObject="5" type="placeFusion"/>
+        <link sourceElement="0" sourceElementId="p-b2-4934bea1" sourceObject="4" targetElement="0" targetElementId="p-b1-d7bf3424" targetObject="3" type="placeFusion"/>
+        <link sourceElement="2" sourceElementId="p-b2-79334428" sourceObject="4" targetElement="2" targetElementId="p-b1-5dad6dc6" targetObject="3" type="placeFusion"/>
+        <link sourceElement="0" sourceElementId="p-b1-48d3c270" sourceObject="6" targetElement="2" targetElementId="p-b1-5dad6dc6" targetObject="3" type="placeFusion"/>
+        <link sourceElement="1" sourceElementId="p-a-a0f416f1" sourceObject="6" targetElement="0" targetElementId="p-a-fc8e4e2e" targetObject="1" type="placeFusion"/>
+      </petriObjectLinks>
+    </toolspecific>
+  </net>
+</pnml>

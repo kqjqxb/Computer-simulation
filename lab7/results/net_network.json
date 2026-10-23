@@ -1,0 +1,453 @@
+{
+ "name": "Мережа масового обслуговування",
+ "objects": [
+  {
+   "name": "Генератор",
+   "class": "Генератор",
+   "priority": 0,
+   "places": [
+    "Генератор",
+    "Черга A"
+   ],
+   "transitions": [
+    "Надходження"
+   ]
+  },
+  {
+   "name": "СМО A",
+   "class": "СМО",
+   "priority": 0,
+   "places": [
+    "Черга A",
+    "Вільні канали A",
+    "Обслужені A"
+   ],
+   "transitions": [
+    "Обслуговування A"
+   ]
+  },
+  {
+   "name": "Розгалуження 1",
+   "class": "Розгалуження",
+   "priority": 0,
+   "places": [
+    "Обслужені A",
+    "Черга B1",
+    "Черга C"
+   ],
+   "transitions": [
+    "На B",
+    "На C"
+   ]
+  },
+  {
+   "name": "СМО B1",
+   "class": "СМО",
+   "priority": 0,
+   "places": [
+    "Черга B1",
+    "Вільні канали B1",
+    "Обслужені B1"
+   ],
+   "transitions": [
+    "Обслуговування B1"
+   ]
+  },
+  {
+   "name": "СМО B2",
+   "class": "СМО",
+   "priority": 0,
+   "places": [
+    "Черга B2",
+    "Вільні канали B2",
+    "Обслужені B2"
+   ],
+   "transitions": [
+    "Обслуговування B2"
+   ]
+  },
+  {
+   "name": "СМО C",
+   "class": "СМО",
+   "priority": 0,
+   "places": [
+    "Черга C",
+    "Вільні канали C",
+    "Обслужені C"
+   ],
+   "transitions": [
+    "Обслуговування C"
+   ]
+  },
+  {
+   "name": "Розгалуження 2",
+   "class": "Розгалуження",
+   "priority": 0,
+   "places": [
+    "Обслужені B1",
+    "Черга A",
+    "Вийшли з мережі"
+   ],
+   "transitions": [
+    "Повтор на A",
+    "Вихід з B"
+   ]
+  }
+ ],
+ "links": [
+  {
+   "copy": "Генератор",
+   "copy_place": "Черга A",
+   "source": "СМО A",
+   "source_place": "Черга A"
+  },
+  {
+   "copy": "Розгалуження 1",
+   "copy_place": "Обслужені A",
+   "source": "СМО A",
+   "source_place": "Обслужені A"
+  },
+  {
+   "copy": "Розгалуження 1",
+   "copy_place": "Черга B1",
+   "source": "СМО B1",
+   "source_place": "Черга B1"
+  },
+  {
+   "copy": "Розгалуження 1",
+   "copy_place": "Черга C",
+   "source": "СМО C",
+   "source_place": "Черга C"
+  },
+  {
+   "copy": "СМО B2",
+   "copy_place": "Черга B2",
+   "source": "СМО B1",
+   "source_place": "Черга B1"
+  },
+  {
+   "copy": "СМО B2",
+   "copy_place": "Обслужені B2",
+   "source": "СМО B1",
+   "source_place": "Обслужені B1"
+  },
+  {
+   "copy": "Розгалуження 2",
+   "copy_place": "Обслужені B1",
+   "source": "СМО B1",
+   "source_place": "Обслужені B1"
+  },
+  {
+   "copy": "Розгалуження 2",
+   "copy_place": "Черга A",
+   "source": "СМО A",
+   "source_place": "Черга A"
+  }
+ ],
+ "places": [
+  {
+   "name": "Генератор",
+   "mark": 1,
+   "object": "Генератор"
+  },
+  {
+   "name": "Черга A",
+   "mark": 0,
+   "object": "СМО A"
+  },
+  {
+   "name": "Вільні канали A",
+   "mark": 1,
+   "object": "СМО A"
+  },
+  {
+   "name": "Обслужені A",
+   "mark": 0,
+   "object": "СМО A"
+  },
+  {
+   "name": "Черга B1",
+   "mark": 0,
+   "object": "СМО B1"
+  },
+  {
+   "name": "Вільні канали B1",
+   "mark": 1,
+   "object": "СМО B1"
+  },
+  {
+   "name": "Обслужені B1",
+   "mark": 0,
+   "object": "СМО B1"
+  },
+  {
+   "name": "Вільні канали B2",
+   "mark": 1,
+   "object": "СМО B2"
+  },
+  {
+   "name": "Черга C",
+   "mark": 0,
+   "object": "СМО C"
+  },
+  {
+   "name": "Вільні канали C",
+   "mark": 1,
+   "object": "СМО C"
+  },
+  {
+   "name": "Обслужені C",
+   "mark": 0,
+   "object": "СМО C"
+  },
+  {
+   "name": "Вийшли з мережі",
+   "mark": 0,
+   "object": "Розгалуження 2"
+  }
+ ],
+ "transitions": [
+  {
+   "name": "Надходження",
+   "object": "Генератор",
+   "distribution": "exp",
+   "mean": 1.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Генератор",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Генератор",
+     "n": 1
+    },
+    {
+     "place": "Черга A",
+     "n": 1
+    }
+   ]
+  },
+  {
+   "name": "Обслуговування A",
+   "object": "СМО A",
+   "distribution": "exp",
+   "mean": 0.6000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Черга A",
+     "n": 1
+    },
+    {
+     "place": "Вільні канали A",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Вільні канали A",
+     "n": 1
+    },
+    {
+     "place": "Обслужені A",
+     "n": 1,
+     "carry": "Черга A"
+    }
+   ]
+  },
+  {
+   "name": "На B",
+   "object": "Розгалуження 1",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 0.7000000000,
+   "inputs": [
+    {
+     "place": "Обслужені A",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга B1",
+     "n": 1,
+     "carry": "Обслужені A"
+    }
+   ]
+  },
+  {
+   "name": "На C",
+   "object": "Розгалуження 1",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 0.3000000000,
+   "inputs": [
+    {
+     "place": "Обслужені A",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга C",
+     "n": 1,
+     "carry": "Обслужені A"
+    }
+   ]
+  },
+  {
+   "name": "Обслуговування B1",
+   "object": "СМО B1",
+   "distribution": "exp",
+   "mean": 1.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Черга B1",
+     "n": 1
+    },
+    {
+     "place": "Вільні канали B1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Вільні канали B1",
+     "n": 1
+    },
+    {
+     "place": "Обслужені B1",
+     "n": 1,
+     "carry": "Черга B1"
+    }
+   ]
+  },
+  {
+   "name": "Обслуговування B2",
+   "object": "СМО B2",
+   "distribution": "exp",
+   "mean": 1.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Черга B1",
+     "n": 1
+    },
+    {
+     "place": "Вільні канали B2",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Вільні канали B2",
+     "n": 1
+    },
+    {
+     "place": "Обслужені B1",
+     "n": 1,
+     "carry": "Черга B1"
+    }
+   ]
+  },
+  {
+   "name": "Обслуговування C",
+   "object": "СМО C",
+   "distribution": "exp",
+   "mean": 1.500000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 1.000000000,
+   "inputs": [
+    {
+     "place": "Черга C",
+     "n": 1
+    },
+    {
+     "place": "Вільні канали C",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Вільні канали C",
+     "n": 1
+    },
+    {
+     "place": "Обслужені C",
+     "n": 1,
+     "carry": "Черга C"
+    }
+   ]
+  },
+  {
+   "name": "Повтор на A",
+   "object": "Розгалуження 2",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 0.2000000000,
+   "inputs": [
+    {
+     "place": "Обслужені B1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Черга A",
+     "n": 1,
+     "carry": "Обслужені B1"
+    }
+   ]
+  },
+  {
+   "name": "Вихід з B",
+   "object": "Розгалуження 2",
+   "distribution": "const",
+   "mean": 0.000000000,
+   "deviation": 0.000000000,
+   "priority": 0,
+   "probability": 0.8000000000,
+   "inputs": [
+    {
+     "place": "Обслужені B1",
+     "n": 1
+    }
+   ],
+   "info_inputs": [],
+   "outputs": [
+    {
+     "place": "Вийшли з мережі",
+     "n": 1,
+     "carry": "Обслужені B1"
+    }
+   ]
+  }
+ ]
+}
